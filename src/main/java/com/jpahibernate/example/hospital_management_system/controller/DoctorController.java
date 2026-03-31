@@ -45,5 +45,28 @@ public class DoctorController {
         return doctor;
     }
 
+    @GetMapping("/count")
+    public String countDoctors(){
+        String response = doctorService.countDoctors();
+        return response;
+    }
+
+    @DeleteMapping("/deleteById/{id}")
+    public String deleteDoctorById(@PathVariable int id){
+        String response = doctorService.deleteDoctorById(id);
+        return response;
+    }
+
+    @PutMapping("/updatePut/{id}")
+    public String updateDoctorUsingPut(@PathVariable int id, @RequestBody Doctor doctor){
+        String response = doctorService.updateDoctorUsingPut(id, doctor);
+        return response;
+    }
+
+    @PatchMapping("/updatePatch/{id}")
+    public String updateDoctorUsingPatch(@PathVariable int id,@RequestParam String newEmail, @RequestParam String newMobile){
+        String response = doctorService.updateDoctorUsingPatch(id,newMobile, newEmail);
+        return response;
+    }
 
 }
